@@ -1,0 +1,266 @@
+#Настройка сообщений
+
+#==============Служебные===========
+prefix: "&cᛃ&f"
+message_yes: "&aYES"
+message_no: "&cNO"
+message_no_one: "&7Никто"
+message_empty: "&7Пусто"
+error_prefix: "&cОшибка&f"
+time_format_example: "число, или число с указанием типа.\n Пример: 1d (для одного дня) 15m (для 15-ти минут)"
+number_format_example: "число (0, 1, 2, ..., 999)"
+coins_format_example: "число (1, 2, ..., 999)"
+#=====================================
+
+#==============Ошибки=================
+no_permissions: "%prefix% Недостаточно прав для этого действия"
+invalid_syntax: "%prefix% Делай так - &c%content%"
+invalid_format: "%prefix% Значение &7%content%&f должно быть %content%"
+only_players: "%prefix% Только игрок может делать это"
+user_notFound: "%prefix% Игрок &c%content%&f не найден"
+save_exception: "%prefix% при попытке сохранить в базу данных. Сообщите администрации"
+#=====================================
+
+#=====================================
+chat_local: "&eL &8| &f%content% &7=> &f%content%"
+chat_global: "&aG &8| &f%content% &7=> &f%content%"
+join_message: "&a+ &f%content%"
+quit_message: "&c- &f%content%"
+#=====================================
+
+#==============Buttons================
+accept_button: "&a[Принять]&f"
+accept_button_hover: "&aПринять"
+decline_button: "&c[Отклонить]&f"
+decline_button_hover: "&cОтклонить"
+mark_button: "&7[Оценить]&f"
+mark_button_hover: "&7Оценить работу"
+mark_button_placeholder: "оценочка"
+helpop_button_reserve: "&7[Забрать]&f"
+helpop_button_reserve_hover: "&7Взяться выполнять этот запрос"
+helpop_button_reply: "&7[Ответить]&f"
+helpop_button_reply_hover: "&7Дать ответ на этот вопрос"
+helpop_button_info: "&7[Инфо]&f"
+helpop_button_info_hover: "&7Получить ин-фу по этому вопросу"
+teleportation_button: "&7[Телепортация]&f"
+teleportation_button_hover: "&7Нажмите для телепортации на &f%content%"
+#=====================================
+
+#==============AdminChat==============
+adminchat_format: "&4AC&f &7%content% &8-> &f%content%"
+#=====================================
+
+#==============Helpop==============
+helpop_task: "&4HELP &7#%content%&f &f%content% &8-> &f%content%"
+helpop_answer: "&4HELP &fОтвет от администрации &8-> &c%content%"
+helpop_mark: "%prefix% Вы оценили ответ &7#%content%&f на &6%content%★ &7&o%content%"
+helpop_answered: "%prefix% Вы дали ответ на вопрос с номером &7#%content%&f"
+helpop_marktime_expired: "%prefix% Время на оценку ответа вышло"
+helpop_its_fucking_yours: "%prefix% Давайте уж лучше пусть на ваш вопрос отвечают другие"
+helpop_no_answer: "%prefix% Как вы можете оценить работу, если работа еще не была выполнена"
+helpop_task_sended: "%prefix% Ваш вопрос передан администрации. Его уникальный номер - &7#%content%"
+helpop_inHandle_admins: "&4HELP &fАдминистратор &c%content%&f взял на выполнение вопрос &7#%content%&f"
+helpop_inHandle: "&4HELP &fВаш вопрос &7#%content%&f взят на выполнение. Вскоре вам ответят"
+helpop_inHandle_already_by_you: "&4HELP &fЭтот вопрос и так закреплен за вами. Скорее дайте ответ"
+helpop_already_inhandle: "%prefix% Запрос &7#%content%&f уже выполняется администратором &c%content%"
+helpop_already_answered: "%prefix% Запрос &7#%content%&f уже выполнен"
+helpop_no_such_id: "%prefix% Запрос &7#%content%&f не найден. Проверьте ID"
+helpop_list_empty: "%prefix% Список ожидающих запросов пуст. Это прекрасно!"
+helpop_list_tag: "\n%prefix% Список неотвеченных вопросов"
+helpop_list_field: " &8- &7#%content%&f &8|&f Задал &7%content%&f &8|&f Время &7%content%&f"
+helpop_about_task: "\n%prefix% Информация по запросу &7#%content%&f\n - Вопрос &7%content%&f\n - В обработке &7%content%&f\n - Завершён &7%content%&f\n - Задал вопрос &7%content%&f\n - Время, когда задал &7%content%&f\n\n - Ответ &7%content%&f\n - Ответил на вопрос &7%content%&f\n - Время, когда ответил &7%content%&f\n - Оценка работы &7%content%&f\n - Комментарий &7%content%&f"
+#=====================================
+
+#============PersonalMessage==============
+personalmessage_only_others: "%prefix% Вы не можете отправлять сообщения самому себе"
+personalmessage_ignore_only_others: "%prefix% Нельзя бросить самого себя в игнор. Не по-людски это"
+personalmessage_format: "&6PM&f &f%content% &7-> &e%content%"
+personalmessage_format_you: "&6PM&f &f%content% &7<- &e%content%"
+personalmessage_ignore_add: "%prefix% Вы бросили игрока &c%content%&f в игнор"
+personalmessage_ignore_remove: "%prefix% Теперь вам будут видны сообщения от &c%content%"
+personalmessage_ignore_remove_already: "%prefix% Игрок и так не находится в вашем черном списке. Незачем его удалять"
+personalmessage_ignore_add_already: "%prefix% Этот игрок и так находится в вашем черном списке"
+#=====================================
+
+#============ReplyMessage==============
+replymessage_target_not_found: "%prefix% Отвечать некому. Последний собеседник не известен"
+#==============================+=======
+
+#============ReaxEssentials===========
+reload_start: "%prefix% Началась перезагрузка плагина..."
+reload_complete: "%prefix% Конфиги и менеджеры плагина успешно перезагружены"
+reload_failed: "%prefix% При перезагрузке плагина произошла ошибка"
+#=====================================
+
+#================TpRandom=============
+tpr_delay: "%prefix% До следующей телепортации подожди &c%content%"
+tpr_search_start: "%prefix% Начался поиск подходящего места для телепортации..."
+tpr_teleported_you: "%prefix% Вы были телепортированы на рандомное место на карте"
+tpr_teleported_other: "%prefix% Вы рандомно телепортировали игрока &c%content%"
+#=====================================
+
+#==============Телепортация===========
+teleportation_ignored: "%prefix% Игрок &c%content%&f запретил телепортироваться к нему"
+teleportation_ignore_on_own: "%prefix% Все запросы на телепортацию будут автоматически отклоняться. Играйте спокойно"
+teleportation_ignore_on: "%prefix% Вы отключили все запросы на телепортацию к игроку &c%content%"
+teleportation_ignore_off_own: "%prefix% Вам вновь будут приходить запросы на телепортацию от других игроков"
+teleportation_ignore_off: "%prefix% Вы включили все запросы на телепортацию к игроку &c%content%"
+teleportation_request_sent: "%prefix% Вы отправили запрос на телепортацию &c%content%"
+teleportation_request_received: "\n%prefix% Вам пришел запрос на телепортацию от &c%content%&f\nПока запрос активен игрок не сможет посылать другие запросы\nЗапрос автоматически истечет через &c%content%&f секунд"
+teleportation_request_empty: "%prefix% Запрос от данного игрока уже недействителен"
+teleportation_request_deleted: "%prefix% Запрос на телепортацию истек. Можно отправлять следующий :D"
+teleportation_request_accept: "%prefix% Вы приняли запрос на телепортацию от &c%content%"
+teleportation_request_decline: "%prefix% Вы отказали &c%content%&f в телепортации к вам"
+teleportation_request_decline_by: "%prefix% На ваш запрос &c%content%&f ответил отказом"
+teleportation_request_accept_by: "%prefix% &c%content%&f принял запрос"
+teleportation_request_already: "%prefix% Есть уже один активный запрос. Больше нельзя"
+teleportation_request_only_others: "%prefix% Вы не можете отправлять запрос самому себе"
+#=====================================
+
+#================Киты=================
+kit_created: "%prefix% Кит &c%content%&f успешно создан"
+kit_list: "%prefix% Доступные тебе киты - &c%content%&f"
+kit_list_empty: "%prefix% Нет доступных китов"
+kit_already_exists: "%prefix% Данный набор уже существует. Используйте &c/kitedit %content%"
+kit_removed: "%prefix% Набор &c%content%&f успешно удалён"
+kit_parameter_changed: "%prefix% Значение параметра &c%content%&f установлено на &c%content%&f"
+kit_not_permit: "%prefix% Данный набор вам не доступен"
+kit_not_exists: "%prefix% Данного набора не существует"
+kit_edited: "%prefix% Изменения в ките &c%content%&f сохранены"
+kit_received: "%prefix% Вы получили кит &c%content%"
+kit_delay: "%prefix% Получить кит в следующий раз можно будет &c%content%"
+#=====================================
+
+#================Home=================
+home_not_exists: "%prefix% Точка дома &c%content%&f не найдена"
+home_maxamount_create: "%prefix% Вы не можете создать больше &c%content%&f точек дома"
+home_maxamount_share: "%prefix% Вы не можете поделиться больше, чем &c%content%&f-ю домами"
+home_invalid_chars: "%prefix% В названии разрешены только латинские буквы и цифры"
+home_invalid_amount: "%prefix% Длина названия не должна превышать &c%content%&f символов"
+home_new: "%prefix% Новая точка дома &c%content%&f установлена."
+home_remove: "%prefix% Точка дома &c%content%&f удалена"
+home_list: "\n%prefix% Доступные тебе точки домов, а точнее команды для телепортации по ним"
+home_list_field: " &8- &7%content%"
+home_list_empty: "%prefix% У тебя нет ниодного дома. Создать - &c/sethome"
+home_shared: "%prefix% Вы поделились своей точкой дома с &c%content%"
+home_shared_already: "%prefix% Данный игрок уже получил пиглашение на точку &c%content%"
+home_shared_remove: "%prefix% Вы забрали приглашение на точку &c%content%&f у игрока &c%content%"
+home_shared_remove_already: "%prefix% У игрока &c%content%&f нет приглашения на &c%content%"
+home_share_with_you: "%prefix% Игрок &c%content%&f дал доступ к своей точке дома.\nДля перемещения &c"
+home_teleportation_own: "%prefix% Вы переместились на свою точку дома"
+home_teleportation_another: "%prefix% Вы переместились на точку дома игрока &c%content%"
+home_teleportation_another_deny: "%prefix% Игрок не приглашал вас на свою точку дома"
+#=====================================
+
+#================Spawn=================
+spawn_create: "%prefix% Точка спавна для игроков установлена в текующую позицию"
+spawn_not_exists: "%prefix% Точка спавна не установлена. Сообщите администрации"
+spawn_teleport_you: "%prefix% Вы были перемещены на спавн"
+spawn_teleport_other: "%prefix% Вы переместили &c%content%&f на спавн"
+#=====================================
+
+#================Warp=================
+warp_not_exists: "%prefix% Варп с названием &c%content%&f не найден"
+warp_maxamount_create: "%prefix%  Вы не можете создать больше &c%content%&f варпов"
+warp_already_exists: "%prefix% Варп с названием &c%content%&f уже существует"
+warp_invalid_chars: "%prefix% В названии варпа допустимы только латинские буквы и цифры"
+warp_invalid_amount: "%prefix% Длина названия варпа не должна превышать &c%content%&f символов"
+warp_created: "%prefix% Вы создали варп &c%content%&f"
+warp_removed: "%prefix% Вы удалили варп &c%content%&f"
+warp_teleported: "%prefix% Перемещение на точку варпа &c%content%&f"
+warp_list: "%prefix% Список доступных вам варпов:"
+warp_list_field: "&c%content%"
+warp_list_empty: "%prefix% У вас нет ниодного доступного варпа"
+#=====================================
+
+#=================GameMode=================
+gameMode_change: "%prefix% Игровой режим &c%content%&f установлен на &c%content%&f"
+gameMode_change_own: "%prefix% Игровой режим установлен на &c%content%&f"
+gameMode_survival: "выживание"
+gameMode_creative: "креатив"
+gameMode_spectator: "наблюдение"
+gameMode_adventure: "приключения"
+#==========================================
+
+#=================Fly=================
+fly_on: "%prefix% Включен режим полета для &c%content%&f"
+fly_off: "%prefix% Выключен режим полета для &c%content%&f"
+fly_on_you: "%prefix% Включен режим полета. Два раза по пробелику и полетели!"
+fly_off_you: "%prefix% Режим полета выключен. Аккуратнее"
+#=====================================
+
+#=================Weather=================
+weather_storm: "%prefix% Вы обратились к всевышним и вызвали дождь"
+weather_sun: "%prefix% В мире установлена солнечная погода"
+weather_thundering: "%prefix% В мире установлен дождь с молниями. Вах-ха-ха!"
+#==========================================
+
+#=================TimeSet=================
+timeset: "%prefix% В мире установлено время суток на &c%content%"
+#==========================================
+
+#=================PlayTime=================
+playtime_own: "%prefix% Вы наиграли на сервере &c%content%&f"
+playtime_other: "%prefix% Игрок &c%content%&f наиграл на сервере &c%content%&f"
+#==========================================
+
+#=================Back=================
+back_not_exists: "%prefix% Извините, но точка последней смерти не найдена"
+back_teleported: "%prefix% Игрок &%content%&f был телепортирован на точку своей последней смерти"
+back_teleported_you: "%prefix% Вы были телепортированы на точку своей последней смерти"
+#=====================================
+
+#=================God=================
+god_on: "%prefix% Включен режим бога для &c%content%&f"
+god_off: "%prefix% Выключен режим бога для &c%content%&f"
+god_on_you: "%prefix% Вы перешли в режим бога. Вас не убить!)"
+god_off_you: "%prefix% Вы вышли из режима бога. Вы смертны"
+#=====================================
+
+#=================Feed=================
+feed: "%prefix% Запас сытости востановлен для &c%content%&f"
+feed_you: "%prefix% Ваш запас сытости востановлен"
+#=====================================
+
+#=================Heal=================
+heal: "%prefix% Запас сытости и здоровья востановлен для &c%content%&f"
+heal_you: "%prefix% Ваш запас сытости и здоровья востановлен"
+#=====================================
+
+#=================Ban=================
+banuser_unban: "&4UNBAN&f Администратор &c%content%&f разбанил игрока &c%content%&f"
+banuser_unban_already: "%prefix% Этот игрок не находится в бане. Разбан бессмысленен"
+banuser_chat: "&4BAN&f Администратор &c%content%&f забанил игрока &c%content%\n &7➥ &fРазбан &7%content%&f Причина бана &7%content%"
+banuser_login: "&f<========&4BANNED&f========>\n&fВас забанил администратор &c%content%\n&fВремя разбана &c%content%\n&fПричина бана &c%content%\n&fЕсли есть вопросы - пишите!\n&f<=========================>"
+#=====================================
+
+#=================Mute=================
+mute_chat: "&2MUTE&f Администратор &2%content%&f выдал мут игроку &2%content%\n &7➥ &fВремя мута &7%content%&f Причина мута &7%content%"
+mute_unmute_chat: "&2UNMUTE&f Администратор &2%content%&f снял мут игроку &2%content%"
+mute_unmute_chat_already: "%prefix% У этого игрока нет мута. Он и так может писать в чат"
+mute_message: "%prefix% Вы не можете писать в чат еще &c%content%"
+#=====================================
+
+#=================Kick=================
+kick_chat: "&3KICK&f Администратор &3%content%&f кикнул игрока &3%content%&f\n &7➥ &fПричина &7%content%"
+kick_login: "&f<========&3KICK&f========>\n&fВас кикнул администратор &3%content%\n&fПричина кика &3%content%\n&fВеди себя хорошо\n&f<=========================>"
+#=====================================
+
+#=================Mute=================
+warn_chat: "&eWARN&f Администратор &e%content%&f выдал &e%content%&f-е предупреждение &e%content%&f\n &7➥ &fПричина &7%content%"
+warn_clear: "%prefix% Вы забрали &c%content%&f варнов у &c%content%&f. Теперь у него их &c%content%"
+warn_clear_from_you: "%prefix% Администратор &c%content%&f забрал у вас &c%content%&f варнов. Теперь у вас их &c%content%"
+warns_amount_you: "%prefix% На данный момент у тебя &c%content%&f варнов"
+warns_amount_other: "%prefix% Сейчас у &c%content%&f набрано &c%content%&f варнов"
+#=====================================
+
+#=================Economy=================
+coins_pay: "%prefix% Вы передали &e%content%&f монеток игроку &e%content%"
+coins_receive: "%prefix% Игрок &e%content%&f перевел вам &e%content%&f монеток"
+coins_lack: "%prefix% У вас недостаточно монеток. У вас на баллансе &e%content%&f"
+coins_amount: "%prefix% Сейчас у вас на баллансе &e%content%&f"
+coins_amount_other: "%prefix% Сейчас у &e%content%&f на баллансе &e%content%&f монеток"
+coins_set: "%prefix% Балланс игрока &e%content%&f установлен на &e%content%"
+coins_give: "%prefix% На балланс игрока &e%content%&f было добавлено &e%content%"
+coins_take: "%prefix% С балланса игрока &e%content%&f было списано &e%content%"
+#=====================================

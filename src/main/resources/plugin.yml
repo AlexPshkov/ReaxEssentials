@@ -1,0 +1,123 @@
+#Плагин специально для сервера ReaxLab
+#Сайт проекта https://mc.reaxlab.ru/
+
+name: ReaxEssentials
+version: '${project.version}'
+main: ru.alexpshkov.reaxessentials.ReaxEssentials
+author: AlexPshkov
+description: Essentials commands for ReaxLab
+
+permissions:
+  reaxessentials.*:
+    description: Access for all plugin commands
+    default: op
+
+  reaxessentials.warp.amount.1:
+    description: Allows you to have 1 warp
+    default: true
+
+  reaxessentials.home.amount.1:
+    description: Allows you to have 1 home
+    default: true
+
+  reaxessentials.kit.receive.start:
+    description: Allows you to receive start kit
+    default: true
+
+  reaxessentials.back:
+    description: Allows you to use back command
+
+  reaxessentials.feed:
+    description: Allows you to use feed command
+
+  reaxessentials.fly:
+    description: Allows you to use fly command
+
+  reaxessentials.gamemode:
+    description: Allows you to use gamemode command
+
+  reaxessentials.god:
+    description: Allows you to use god command
+
+  reaxessentials.heal:
+    description: Allows you to use heal command
+
+  reaxessentials.adminchat:
+    description: Allows you to use adminchat
+
+  reaxessentials.kit.change:
+    description: Allows you to create, remove, change kits tpignore.others
+
+  reaxessentials.delwarp:
+    description: Allows you to remove yours warp
+
+  reaxessentials.setwarp:
+    description: Allows you to set warp
+
+  reaxessentials.weather:
+    description: Allows you to change weather
+
+  reaxessentials.timeset:
+    description: Allows you to change time
+
+  reaxessentials.setspawn:
+    description: Allows you to change spawnpoint
+
+  reaxessentials.ban:
+    description: Allows you to ban players
+
+  reaxessentials.kick:
+    description: Allows you to kick players
+
+  reaxessentials.mute:
+    description: Allows you to mute players
+
+  reaxessentials.warn:
+    description: Allows you to warn players
+
+  reaxessentials.economy:
+    description: Allows you to manage economy
+
+  reaxessentials.balance.others:
+    description: Allows you to check balance of others
+
+  reaxessentials.warnsamount.others:
+    description: Allows you to check amount of warns of other players
+
+  reaxessentials.chat.long:
+    description: Allows you to read local chat at far distance
+
+  reaxessentials.delwarp.others:
+    description: Allows you to remove all warps
+    children:
+      reaxessentials.delwarp: true
+
+  reaxessentials.spawn.others:
+    description: Allows you to use /spawn <playerName>
+
+  reaxessentials.tpr.others:
+    description: Allows you to use /tpr <playerName>
+
+  reaxessentials.tpr.delay.bypass:
+    description: Allows you to use /tpr without delay
+
+  reaxessentials.helpop.answer:
+    description: Allows you to answer players by helpop
+
+  reaxessentials.tpignore.others:
+    description: Allows you to toggle tp for others
+
+  reaxessentials.back.others:
+    description: Allows you to use /back <playerName>
+    children:
+      reaxessentials.back: true
+
+  reaxessentials.feed.others:
+    description: Allows you to use /feed <playerName>
+    children:
+      reaxessentials.feed: true
+
+  reaxessentials.fly.others:
+    description: Allows you to use /fly <playerName>
+    children:
+      reaxessentials.fly: true

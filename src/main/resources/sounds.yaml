@@ -1,0 +1,104 @@
+#Настройка звуков
+
+#==================GUI================
+gui_open: "BLOCK_WOODEN_DOOR_OPEN:1.0:2"
+#=====================================
+
+#==================Home================
+home_teleportation: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+home_new: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+home_shared_with_you: "UI_TOAST_CHALLENGE_COMPLETE:1.0:1.5"
+home_shared: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#=====================================
+
+#===========Economy==========
+coins_received: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#=====================================
+
+#===========TpRandom==========
+tpr_teleported: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#=====================================
+
+#===========AdminChat==========
+adminchat_received: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#=====================================
+
+#===========Ban==========
+user_banned: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#=====================================
+
+#===========Kick==========
+user_kicked: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#=====================================
+
+#===========Mute==========
+user_muted: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#=====================================
+
+#===========Warn==========
+user_warned: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#=====================================
+
+#===========Helpop==========
+helpop_task: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+helpop_answer: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#=====================================
+
+#===========PersonalMessages==========
+personalmessage_received: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#=====================================
+
+#==============Телепортация===========
+teleportation_sent: "BLOCK_WOODEN_DOOR_OPEN:1.0:2"
+teleportation_accept: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+teleportation_decline: "ENTITY_CAT_HURT:1.0:1.5"
+teleportation_ignore_on: "ENTITY_CAT_HURT:1.0:1.5"
+teleportation_ignore_off: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#=====================================
+
+#==============Киты===================
+kit_received: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#=====================================
+
+#==============Warp===================
+warp_created: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+warp_removed: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+warp_teleported: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#=====================================
+
+#==============Spawn===================
+spawn_teleport: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+spawn_create: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#=====================================
+
+#==============GameMode===================
+gameMode_change: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#=====================================
+
+#==============God===================
+god_on_you: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#==============God===================
+
+#==============Fly===================
+fly_on_you: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#==============God===================
+
+#===========Weather==========
+weather_set: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#=====================================
+
+#===========TimeSet==========
+time_set: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#=====================================
+
+#==============Feed===================
+feed_you: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#==============God===================
+
+#==============Heal===================
+heal_you: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#==============God===================
+
+#==============Back===================
+back_teleported_you: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#==============God===================
