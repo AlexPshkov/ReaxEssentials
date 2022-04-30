@@ -66,14 +66,23 @@ permissions:
   reaxessentials.ban:
     description: Allows you to ban players
 
+  reaxessentials.unban:
+    description: Allows you to unban players
+
   reaxessentials.kick:
     description: Allows you to kick players
 
   reaxessentials.mute:
     description: Allows you to mute players
 
+  reaxessentials.unmute:
+    description: Allows you to unmute players
+
   reaxessentials.warn:
     description: Allows you to warn players
+
+  reaxessentials.warn.clear:
+    description: Allows you clear warns of player
 
   reaxessentials.economy:
     description: Allows you to manage economy
