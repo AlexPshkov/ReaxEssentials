@@ -31,7 +31,7 @@ public class KitDelCommand extends AbstractCommand {
             return false;
         }
 
-        reaxEssentials.getDataBase().removeKit(args[1]).thenAccept(flag ->
+        reaxEssentials.getDataBase().removeKit(args[0]).thenAccept(flag ->
                 printMessage(player, flag ? ReaxMessage.KIT_REMOVED : ReaxMessage.KIT_NOT_EXISTS, args[0]));
 
         return true;
