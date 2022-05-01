@@ -29,7 +29,7 @@ public class WarnClearCommand extends AbstractCommand {
             return false;
         }
         if (args.length == 0) {
-            printMessage(commandSender, ReaxMessage.INVALID_SYNTAX, alias + "<playerName> [amount]");
+            printMessage(commandSender, ReaxMessage.INVALID_SYNTAX, alias + " <playerName> [amount]");
             return false;
         }
 
