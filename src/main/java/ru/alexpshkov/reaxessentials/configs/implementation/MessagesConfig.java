@@ -1,6 +1,6 @@
 package ru.alexpshkov.reaxessentials.configs.implementation;
 
-import com.sun.istack.internal.NotNull;
+import org.jetbrains.annotations.NotNull;
 import ru.alexpshkov.reaxessentials.ReaxEssentials;
 import ru.alexpshkov.reaxessentials.configs.AbstractConfig;
 import ru.alexpshkov.reaxessentials.service.enums.ReaxMessage;

@@ -9,7 +9,7 @@ import ru.alexpshkov.reaxessentials.commands.CommandManager;
 import ru.alexpshkov.reaxessentials.configs.implementation.MainConfig;
 import ru.alexpshkov.reaxessentials.configs.implementation.MessagesConfig;
 import ru.alexpshkov.reaxessentials.configs.implementation.SoundsConfig;
-import ru.alexpshkov.reaxessentials.database.implementation.SQLiteDataBase;
+import ru.alexpshkov.reaxessentials.database.implementation.SQLDataBase;
 import ru.alexpshkov.reaxessentials.kits.KitsManager;
 import ru.alexpshkov.reaxessentials.service.BukkitAsyncExecutor;
 import ru.alexpshkov.reaxessentials.players.PlayersManager;
@@ -42,7 +42,7 @@ public final class ReaxEssentials extends JavaPlugin {
     public void onEnable() {
         this.bukkitAsyncExecutor = new BukkitAsyncExecutor(this);
         this.bukkitSyncExecutor = new BukkitSyncExecutor(this);
-        this.dataBase = new SQLiteDataBase(this);
+        this.dataBase = new SQLDataBase(this);
         this.serviceManager = new ServiceManager(this);
         try {
             serviceManager.init();
@@ -75,6 +75,7 @@ public final class ReaxEssentials extends JavaPlugin {
         this.teleportationManager = new TeleportationManager(this);
         this.playersManager = new PlayersManager(this);
 
+        getLogger().info("Initializing all managers...");
         this.mainConfig.init();
         this.messagesConfig.init();
         this.soundsConfig.init();
@@ -82,20 +83,25 @@ public final class ReaxEssentials extends JavaPlugin {
         this.kitsManager.init();
         this.teleportationManager.init();
         this.playersManager.init();
+        getLogger().info("Managers successfully initialized");
 
+        getLogger().info("Loading configs");
         this.mainConfig.loadConfiguration();
         this.messagesConfig.loadConfiguration();
         this.soundsConfig.loadConfiguration();
+        getLogger().info("Configs successfully loaded");
     }
 
     /**
      * Regisering listeners
      */
     private void registerListeners() {
+        getLogger().info("Loading listeners...");
         ClassIndex.getSubclasses(IReaxListener.class, this.getClassLoader()).forEach(aClass -> {
             try {
                 Listener listener = aClass.getDeclaredConstructor(ReaxEssentials.class).newInstance(this);
                 Bukkit.getPluginManager().registerEvents(listener, this);
+                getLogger().info("Loaded listener " + aClass.getSimpleName());
             } catch (Exception ignored) {}
         });
     }

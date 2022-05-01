@@ -1,10 +1,10 @@
 #Главный конфиг сервера
 
 dataBase:
-  type: "SQLite" #Счас только SQLite, позже будут другие (наверно)
-  fileRelativePath: "database"
-  userName: "none"
-  userPassword: "none"
+  driver: "org.sqlite.JDBC"
+  url: "jdbc:sqlite:/plugins/ReaxEssentials/database.db"
+  userName: "user"
+  userPassword: "password"
 
 tpr:
   delay: 10 #Время в секундах между телепортациями

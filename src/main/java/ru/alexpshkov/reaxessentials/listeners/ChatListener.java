@@ -1,6 +1,5 @@
 package ru.alexpshkov.reaxessentials.listeners;
 
-import com.sun.istack.internal.NotNull;
 import lombok.RequiredArgsConstructor;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.milkbowl.vault.chat.Chat;
@@ -9,11 +8,14 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.jetbrains.annotations.NotNull;
 import ru.alexpshkov.reaxessentials.ReaxEssentials;
+import ru.alexpshkov.reaxessentials.database.entities.UserEntity;
 import ru.alexpshkov.reaxessentials.service.Utils;
 import ru.alexpshkov.reaxessentials.service.enums.ReaxMessage;
 import ru.alexpshkov.reaxessentials.service.interfaces.index.IReaxListener;
 
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.Set;
 

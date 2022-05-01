@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.ServicePriority;
 import ru.alexpshkov.reaxessentials.ReaxEssentials;
@@ -23,8 +22,8 @@ public class ServiceManager implements IInitRequired {
     public void init() {
         RegisteredServiceProvider<Chat> chatRegisteredServiceProvider = reaxEssentials.getServer().getServicesManager().getRegistration(Chat.class);
         if (chatRegisteredServiceProvider == null) {
-            reaxEssentials.getLogger().info("No chat provider found. Please install at least LuckPerms");
-            Bukkit.shutdown();
+            reaxEssentials.getLogger().warning("No chat provider found. Please install at least LuckPerms");
+            reaxEssentials.getPluginLoader().disablePlugin(reaxEssentials);
             return;
         }
         economyService = new EconomyService(reaxEssentials.getDataBase());

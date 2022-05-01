@@ -1,19 +1,17 @@
 package ru.alexpshkov.reaxessentials.commands;
 
-import com.sun.istack.internal.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import net.milkbowl.vault.chat.Chat;
-import net.milkbowl.vault.permission.Permission;
 import org.atteo.classindex.IndexSubclasses;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachmentInfo;
+import org.jetbrains.annotations.NotNull;
 import ru.alexpshkov.reaxessentials.ReaxEssentials;
 import ru.alexpshkov.reaxessentials.configs.implementation.MessagesConfig;
 import ru.alexpshkov.reaxessentials.service.enums.ReaxMessage;

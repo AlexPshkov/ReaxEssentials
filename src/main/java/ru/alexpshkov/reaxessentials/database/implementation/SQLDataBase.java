@@ -5,7 +5,6 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
-import javafx.util.Pair;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.atteo.classindex.ClassIndex;
@@ -16,13 +15,12 @@ import ru.alexpshkov.reaxessentials.database.entities.*;
 import ru.alexpshkov.reaxessentials.service.interfaces.IDataBase;
 import ru.alexpshkov.reaxessentials.service.interfaces.index.IDataEntity;
 
-import java.io.File;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 @RequiredArgsConstructor
-public class SQLiteDataBase implements IDataBase {
+public class SQLDataBase implements IDataBase {
     private final ReaxEssentials reaxEssentials;
 
     private Dao<KitEntity, String> kitsTableDao;
@@ -33,18 +31,15 @@ public class SQLiteDataBase implements IDataBase {
     private Dao<DeathPositionEntity, Integer> deathPositionDao;
     private Dao<HelpEntity, Integer> helpsDao;
 
-    private final HashMap<String, Pair<UserEntity, Long>> cachedUsers = new HashMap<>();
+    private final HashMap<String, UserEntity> cachedUsers = new HashMap<>();
+    private final HashMap<String, Long> lastAccessTime = new HashMap<>();
 
     @Override
     public void init() throws Exception {
         DataBaseParameters dataBaseParameters = reaxEssentials.getMainConfig().getDataBaseParameters();
-        String URL;
-        if (dataBaseParameters.getDataBaseType().equalsIgnoreCase("SQLite")) {
-            Class.forName("org.sqlite.JDBC");
-            URL = "jdbc:sqlite:" + reaxEssentials.getDataFolder().getPath() + File.separator + dataBaseParameters.getFileRelativePath() + ".db";
-        } else throw new SQLException("Invalid dataBase type. Change it in config.yaml");
-
-        try (ConnectionSource connectionSource = new JdbcConnectionSource(URL)) {
+        reaxEssentials.getLogger().info("Initializing data base. Using: " + dataBaseParameters.getDataBaseDriver());
+        Class.forName(dataBaseParameters.getDataBaseDriver());
+        try (ConnectionSource connectionSource = new JdbcConnectionSource(dataBaseParameters.getDataBaseUrl(), dataBaseParameters.getUserName(), dataBaseParameters.getUserPassword())) {
             //Creating DAOs
             kitsTableDao = DaoManager.createDao(connectionSource, KitEntity.class);
             usersTableDao = DaoManager.createDao(connectionSource, UserEntity.class);
@@ -56,8 +51,12 @@ public class SQLiteDataBase implements IDataBase {
 
             ClassIndex.getSubclasses(IDataEntity.class, reaxEssentials.getClass().getClassLoader())
                     .forEach(aClass -> createTableIfNotExists(connectionSource, aClass));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
         }
         Bukkit.getScheduler().runTaskTimerAsynchronously(reaxEssentials, this::purgeCache, 60 * 20L, 60 * 20L);
+        reaxEssentials.getLogger().info("Data base initialized successfully");
 
     }
 
@@ -65,10 +64,12 @@ public class SQLiteDataBase implements IDataBase {
      * Purge old data of users. Only from memory
      */
     public void purgeCache() {
-        for (Map.Entry<String, Pair<UserEntity, Long>> stringPairEntry : cachedUsers.entrySet()) {
-            if (Bukkit.getPlayer(stringPairEntry.getKey()) != null) continue;
-            if (new Date().getTime() - stringPairEntry.getValue().getValue() >= 60000)
-                cachedUsers.remove(stringPairEntry.getKey());
+        for (Map.Entry<String, Long> stringLongEntry : lastAccessTime.entrySet()) {
+            if (Bukkit.getPlayer(stringLongEntry.getKey()) != null) continue;
+            if (new Date().getTime() - stringLongEntry.getValue() >= 60000) {
+                cachedUsers.remove(stringLongEntry.getKey());
+                lastAccessTime.remove(stringLongEntry.getKey());
+            }
         }
     }
 
@@ -77,6 +78,7 @@ public class SQLiteDataBase implements IDataBase {
         try {
             TableUtils.createTableIfNotExists(connectionSource, aClass);
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }
@@ -92,6 +94,7 @@ public class SQLiteDataBase implements IDataBase {
                         .eq("homeName", homeName)
                         .queryForFirst();
             } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -105,6 +108,7 @@ public class SQLiteDataBase implements IDataBase {
                         .eq("whoOwned", whoOwned)
                         .query();
             } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -117,6 +121,7 @@ public class SQLiteDataBase implements IDataBase {
                 homesTableDao.createOrUpdate(homeEntity);
                 return true;
             } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -129,6 +134,7 @@ public class SQLiteDataBase implements IDataBase {
                 homesTableDao.delete(homeEntity);
                 return true;
             } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -160,6 +166,7 @@ public class SQLiteDataBase implements IDataBase {
                 trustedHomeDao.delete(trustedHome);
                 return true;
             } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -173,6 +180,7 @@ public class SQLiteDataBase implements IDataBase {
                 trustedHomeDao.createOrUpdate(trustedHome);
                 return false;
             } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -184,6 +192,7 @@ public class SQLiteDataBase implements IDataBase {
             try {
                 return trustedHomeDao.queryBuilder().where().eq("trustedUser", userEntity).query();
             } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -195,6 +204,7 @@ public class SQLiteDataBase implements IDataBase {
             try {
                 return trustedHomeDao.queryBuilder().where().eq("homeEntity", homeEntity).query();
             } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -208,6 +218,7 @@ public class SQLiteDataBase implements IDataBase {
                 if (trustedHomes.isEmpty()) return null;
                 return trustedHomes.get(0);
             } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -219,6 +230,7 @@ public class SQLiteDataBase implements IDataBase {
             try {
                 return trustedHomeDao.queryBuilder().where().eq("trustedUser", trustedUserName).query();
             } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -230,6 +242,7 @@ public class SQLiteDataBase implements IDataBase {
             try {
                 return (!trustedHomeDao.queryForMatchingArgs(trustedHome).isEmpty());
             } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -246,6 +259,7 @@ public class SQLiteDataBase implements IDataBase {
                 }
                 return userEntity;
             } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
 
@@ -258,6 +272,7 @@ public class SQLiteDataBase implements IDataBase {
             try {
                 return SYNC_getUserEntity(userName);
             } catch (Exception e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -270,6 +285,7 @@ public class SQLiteDataBase implements IDataBase {
                 kitsTableDao.createOrUpdate(kitTable);
                 return true;
             } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -281,6 +297,7 @@ public class SQLiteDataBase implements IDataBase {
             try {
                 return kitsTableDao.idExists(kitName);
             } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -292,6 +309,7 @@ public class SQLiteDataBase implements IDataBase {
             try {
                 return kitsTableDao.deleteById(kitName) > 0;
             } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -302,7 +320,8 @@ public class SQLiteDataBase implements IDataBase {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 return kitsTableDao.queryForId(kitName);
-            } catch (Exception e) {
+            } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -313,7 +332,8 @@ public class SQLiteDataBase implements IDataBase {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 return kitsTableDao.queryForAll();
-            } catch (Exception e) {
+            } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -324,7 +344,8 @@ public class SQLiteDataBase implements IDataBase {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 return warpTableDao.queryForAll();
-            } catch (Exception e) {
+            } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -335,7 +356,8 @@ public class SQLiteDataBase implements IDataBase {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 return warpTableDao.queryForEq("whoOwned", userEntity);
-            } catch (Exception e) {
+            } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -346,7 +368,8 @@ public class SQLiteDataBase implements IDataBase {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 return warpTableDao.queryForId(warpName);
-            } catch (Exception e) {
+            } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -358,7 +381,8 @@ public class SQLiteDataBase implements IDataBase {
             try {
                 warpTableDao.createOrUpdate(warpEntity);
                 return true;
-            } catch (Exception e) {
+            } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -370,7 +394,8 @@ public class SQLiteDataBase implements IDataBase {
             try {
                 warpTableDao.delete(warpEntity);
                 return true;
-            } catch (Exception e) {
+            } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -382,7 +407,8 @@ public class SQLiteDataBase implements IDataBase {
             try {
                 ignoredUser.getUserEntity().getIgnoredUsers().getDao().delete(ignoredUser);
                 return true;
-            } catch (Exception e) {
+            } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -391,12 +417,8 @@ public class SQLiteDataBase implements IDataBase {
     @Override
     public CompletableFuture<Boolean> addIgnoredPlayer(@NonNull IgnoredUser ignoredUser) {
         return CompletableFuture.supplyAsync(() -> {
-            try {
-                ignoredUser.getUserEntity().getIgnoredUsers().add(ignoredUser);
-                return true;
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+            ignoredUser.getUserEntity().getIgnoredUsers().add(ignoredUser);
+            return true;
         }, reaxEssentials.getBukkitAsyncExecutor());
     }
 
@@ -407,7 +429,8 @@ public class SQLiteDataBase implements IDataBase {
                 List<IgnoredUser> ignoredUserList = ignoredUser.getUserEntity().getIgnoredUsers().getDao().queryForMatchingArgs(ignoredUser);
                 if (ignoredUserList.isEmpty()) return null;
                 return ignoredUserList.get(0);
-            } catch (Exception e) {
+            } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -419,7 +442,8 @@ public class SQLiteDataBase implements IDataBase {
             try {
                 deathPositionDao.createOrUpdate(deathPositionEntity);
                 return true;
-            } catch (Exception e) {
+            } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -431,7 +455,8 @@ public class SQLiteDataBase implements IDataBase {
             try {
                 helpsDao.createOrUpdate(helpEntity);
                 return helpEntity;
-            } catch (Exception e) {
+            } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -442,7 +467,8 @@ public class SQLiteDataBase implements IDataBase {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 return helpsDao.queryForEq("askerName", userName);
-            } catch (Exception e) {
+            } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -453,18 +479,20 @@ public class SQLiteDataBase implements IDataBase {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 return helpsDao.queryForEq("isComplete", false);
-            } catch (Exception e) {
+            } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
     }
 
     @Override
-    public CompletableFuture<HelpEntity> getHelpById(@NonNull int helpId) {
+    public CompletableFuture<HelpEntity> getHelpById(int helpId) {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 return helpsDao.queryForId(helpId);
-            } catch (Exception e) {
+            } catch (SQLException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, reaxEssentials.getBukkitAsyncExecutor());
@@ -476,13 +504,20 @@ public class SQLiteDataBase implements IDataBase {
         return usersTableDao.idExists(userName);
     }
     public Dao.CreateOrUpdateStatus SYNC_saveUserEntity(@NonNull UserEntity userEntity) throws SQLException {
-        cachedUsers.put(userEntity.getUserName(), new Pair<>(userEntity, new Date().getTime()));
+        cachedUsers.put(userEntity.getUserName(), userEntity);
+        lastAccessTime.put(userEntity.getUserName(), new Date().getTime());
         return usersTableDao.createOrUpdate(userEntity);
     }
     public UserEntity SYNC_getUserEntity(@NonNull String userName) throws SQLException {
-        if (cachedUsers.containsKey(userName)) return cachedUsers.get(userName).getKey();
+        if (cachedUsers.containsKey(userName)) {
+            lastAccessTime.put(userName, new Date().getTime());
+            return cachedUsers.get(userName);
+        }
         UserEntity userEntity = usersTableDao.queryForId(userName);
-        if (userEntity != null) cachedUsers.put(userName, new Pair<>(userEntity, new Date().getTime()));
+        if (userEntity != null) {
+            cachedUsers.put(userName, userEntity);
+            lastAccessTime.put(userName, new Date().getTime());
+        }
         return userEntity;
     }
 

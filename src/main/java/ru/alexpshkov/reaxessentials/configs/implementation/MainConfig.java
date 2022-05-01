@@ -1,7 +1,7 @@
 package ru.alexpshkov.reaxessentials.configs.implementation;
 
-import com.sun.istack.internal.NotNull;
 import lombok.Getter;
+import org.jetbrains.annotations.NotNull;
 import ru.alexpshkov.reaxessentials.ReaxEssentials;
 import ru.alexpshkov.reaxessentials.configs.AbstractConfig;
 import ru.alexpshkov.reaxessentials.database.DataBaseParameters;
@@ -59,11 +59,11 @@ public class MainConfig extends AbstractConfig {
     }
 
     private DataBaseParameters loadDataBaseParameters() {
-        String dbType = getStringFromConfig("dataBase.type").orElse("SQLite");
-        String dbFilePath = getStringFromConfig("dataBase.fileRelativePath").orElse("database");
-        String dbUserName = getStringFromConfig("dataBase.userName").orElse("none");
-        String dbUserPassword = getStringFromConfig("dataBase.userPassword").orElse("none");
-        return new DataBaseParameters(dbType, dbFilePath, dbUserName, dbUserPassword);
+        String dbDriver = getStringFromConfig("dataBase.driver").orElse("org.sqlite.JDBC");
+        String dbUrl = getStringFromConfig("dataBase.url").orElse("jdbc:sqlite:./plugins/ReaxEssentials/database.db");
+        String dbUserName = getStringFromConfig("dataBase.userName").orElse("user");
+        String dbUserPassword = getStringFromConfig("dataBase.userPassword").orElse("password");
+        return new DataBaseParameters(dbUrl, dbDriver, dbUserName, dbUserPassword);
     }
 
 

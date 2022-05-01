@@ -1,10 +1,10 @@
 package ru.alexpshkov.reaxessentials.configs;
 
-import com.sun.istack.internal.NotNull;
 import lombok.Getter;
 import org.atteo.classindex.IndexSubclasses;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.jetbrains.annotations.NotNull;
 import ru.alexpshkov.reaxessentials.ReaxEssentials;
 import ru.alexpshkov.reaxessentials.service.interfaces.IInitRequired;
 
@@ -34,7 +34,6 @@ public abstract class AbstractConfig implements IInitRequired {
 
     /**
      * Init configuration
-     * @throws IOException
      */
     public void init() throws IOException {
         if (absolutFile.exists()) return;

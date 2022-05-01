@@ -1,8 +1,8 @@
 package ru.alexpshkov.reaxessentials.service;
 
-import com.sun.istack.internal.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Bukkit;
+import org.jetbrains.annotations.NotNull;
 import ru.alexpshkov.reaxessentials.ReaxEssentials;
 
 import java.util.concurrent.Executor;
@@ -17,4 +17,5 @@ public class BukkitAsyncExecutor implements Executor {
             command.run();
         } else Bukkit.getScheduler().runTaskAsynchronously(reaxEssentials, command);
     }
+
 }

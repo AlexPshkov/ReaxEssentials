@@ -1,10 +1,10 @@
 package ru.alexpshkov.reaxessentials.configs.implementation;
 
-import com.sun.istack.internal.NotNull;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 import ru.alexpshkov.reaxessentials.ReaxEssentials;
 import ru.alexpshkov.reaxessentials.configs.AbstractConfig;
 import ru.alexpshkov.reaxessentials.service.enums.ReaxSound;

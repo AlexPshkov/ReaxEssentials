@@ -1,8 +1,8 @@
 package ru.alexpshkov.reaxessentials.service;
 
-import com.sun.istack.internal.Nullable;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.Nullable;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -51,7 +51,7 @@ public class Utils {
     public static long convertToSeconds(String string) throws NumberFormatException {
         Matcher matcher = Pattern.compile("\\d+\\w+|\\d").matcher(string);
         if (!matcher.matches()) throw new NumberFormatException();
-        long number = 0;
+        long number;
         try {
             number = Long.parseLong(string);
             return number * 1000;
