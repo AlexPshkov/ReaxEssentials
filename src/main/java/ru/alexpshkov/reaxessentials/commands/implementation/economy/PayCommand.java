@@ -40,7 +40,7 @@ public class PayCommand extends AbstractCommand {
 
         if (amount <= 0) {
             String coinsExample = getMessageFromConfig(ReaxMessage.COINS_FORMAT_EXAMPLE);
-            printMessage(player, ReaxMessage.INVALID_SYNTAX, "amount", coinsExample);
+            printMessage(player, ReaxMessage.INVALID_FORMAT, "amount", coinsExample);
             return false;
         }
 

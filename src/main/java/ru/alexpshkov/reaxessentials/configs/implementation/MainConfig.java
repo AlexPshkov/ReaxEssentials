@@ -53,7 +53,7 @@ public class MainConfig extends AbstractConfig {
 
         helpopTimeForMark = getIntegerFromConfig("helpop.timeForMark").orElse(3600) * 1000;
 
-        localChatRadius = getIntegerFromConfig("chat.localChatRadius").orElse(100);
+        localChatRadius = getIntegerFromConfig("chat.localChatRadius").orElse(50);
 
         dataBaseParameters = loadDataBaseParameters();
     }
