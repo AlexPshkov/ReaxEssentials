@@ -2,7 +2,7 @@
 
 dataBase:
   driver: "org.sqlite.JDBC"
-  url: "jdbc:sqlite:/plugins/ReaxEssentials/database.db"
+  url: "jdbc:sqlite:./plugins/ReaxEssentials/database.db"
   userName: "user"
   userPassword: "password"
 
