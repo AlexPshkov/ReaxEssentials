@@ -10,12 +10,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.jetbrains.annotations.NotNull;
 import ru.alexpshkov.reaxessentials.ReaxEssentials;
-import ru.alexpshkov.reaxessentials.database.entities.UserEntity;
 import ru.alexpshkov.reaxessentials.service.Utils;
 import ru.alexpshkov.reaxessentials.service.enums.ReaxMessage;
 import ru.alexpshkov.reaxessentials.service.interfaces.index.IReaxListener;
 
-import java.sql.SQLException;
 import java.util.Date;
 import java.util.Set;
 
@@ -40,7 +38,7 @@ public class ChatListener implements IReaxListener {
             }
             boolean isGlobal = message.startsWith("!");
             Chat chatService = reaxEssentials.getServiceManager().getChatService();
-            String playerDisplayName = chatService.getPlayerPrefix(player) + " " + player.getName() + " " + chatService.getPlayerSuffix(player);
+            String playerDisplayName = chatService.getPlayerPrefix(player) + " " + player.getName();
             String formattedMessage = reaxEssentials.getMessagesConfig().getMessage(isGlobal ? ReaxMessage.CHAT_GLOBAL : ReaxMessage.CHAT_LOCAL, playerDisplayName, message);
             if (isGlobal) formattedMessage = formattedMessage.replaceFirst("!", "");
 
