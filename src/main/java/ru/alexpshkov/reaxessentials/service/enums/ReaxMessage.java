@@ -16,11 +16,15 @@ public enum ReaxMessage {
     TIME_FORMAT_EXAMPLE("time_format_example"),
     NUMBER_FORMAT_EXAMPLE("number_format_example"),
     COINS_FORMAT_EXAMPLE("coins_format_example"),
+    POSITION_FORMAT_EXAMPLE("position_format_example"),
 
     CHAT_LOCAL("chat_local"),
     CHAT_GLOBAL("chat_global"),
     JOIN_MESSAGE("join_message"),
     QUIT_MESSAGE("quit_message"),
+
+    BROADCAST_FORMAT("broadcast_format"),
+    SAY_FORMAT("say_format"),
 
     COINS_PAY("coins_pay"),
     COINS_RECEIVE("coins_receive"),
@@ -160,6 +164,11 @@ public enum ReaxMessage {
     TPR_TELEPORTED_YOU("tpr_teleported_you"),
     TPR_TELEPORTED_OTHER("tpr_teleported_other"),
 
+    TELEPORTATION_POSITION_OTHER("teleportation_position_other"),
+    TELEPORTATION_PLAYER_OTHER("teleportation_player_other"),
+    TELEPORTATION_PLAYER_YOU("teleportation_player_you"),
+    TELEPORTATION_POSITION_YOU("teleportation_position_you"),
+
     TELEPORTATION_IGNORED("teleportation_ignored"),
     TELEPORTATION_IGNORE_ON_OWN("teleportation_ignore_on_own"),
     TELEPORTATION_IGNORE_OFF_OWN("teleportation_ignore_off_own"),
@@ -213,7 +222,8 @@ public enum ReaxMessage {
     NO_PERM("no_permissions"),
     SAVE_EXCEPTION("save_exception"),
     INVALID_SYNTAX("invalid_syntax"),
-    INVALID_FORMAT("invalid_format");
+    INVALID_FORMAT("invalid_format"),
+    RELATIVE_POSITION_ONLY_PLAYERS("relative_position_only_players");
 
     private final String configField;
 }

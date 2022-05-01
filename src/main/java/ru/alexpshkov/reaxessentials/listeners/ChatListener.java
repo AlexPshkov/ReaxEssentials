@@ -47,6 +47,8 @@ public class ChatListener implements IReaxListener {
             TextComponent textComponent = new TextComponent(formattedMessage);
             if (isGlobal) sendGlobalMessage(textComponent, recipients);
             else sendLocalMessage(textComponent, player.getLocation(), recipients);
+
+            reaxEssentials.getLogger().info(formattedMessage);
         }, reaxEssentials.getBukkitAsyncExecutor());
 
     }

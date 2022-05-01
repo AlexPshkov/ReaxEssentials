@@ -10,10 +10,12 @@ error_prefix: "&cОшибка&f"
 time_format_example: "число, или число с указанием типа.\n Пример: 1d (для одного дня) 15m (для 15-ти минут)"
 number_format_example: "число (0, 1, 2, ..., 999)"
 coins_format_example: "число (1, 2, ..., 999)"
+position_format_example: "координатой (-999, 56, 46)"
 #=====================================
 
 #==============Ошибки=================
 no_permissions: "%prefix% Недостаточно прав для этого действия"
+relative_position_only_players: "%prefix% Использовать &c~&f можно только игрокам"
 invalid_syntax: "%prefix% Делай так - &c%content%"
 invalid_format: "%prefix% Значение &7%content%&f должно быть %content%"
 only_players: "%prefix% Только игрок может делать это"
@@ -48,6 +50,14 @@ teleportation_button_hover: "&7Нажмите для телепортации н
 
 #==============AdminChat==============
 adminchat_format: "&4AC&f &7%content% &8-> &f%content%"
+#=====================================
+
+#==============Say=============
+say_format: "&3S &8| &f%content% &7=> &f%content%"
+#=====================================
+
+#==============Broadcast==============
+broadcast_format: "\n&6Объявление &7=> &f%content%\n"
 #=====================================
 
 #==============Helpop==============
@@ -100,6 +110,10 @@ tpr_teleported_other: "%prefix% Вы рандомно телепортирова
 #=====================================
 
 #==============Телепортация===========
+teleportation_position_you: "%prefix% Вы были телепортированы на точку &c%content%"
+teleportation_player_you: "%prefix% Вы были телепортированы к игроку &c%content%"
+teleportation_player_other: "%prefix% Игрок &c%content%&f был телепортирован к игроку &c%content%"
+teleportation_position_other: "%prefix% Игрок &c%content%&f был телепортирован на точку &c%content%"
 teleportation_ignored: "%prefix% Игрок &c%content%&f запретил телепортироваться к нему"
 teleportation_ignore_on_own: "%prefix% Все запросы на телепортацию будут автоматически отклоняться. Играйте спокойно"
 teleportation_ignore_on: "%prefix% Вы отключили все запросы на телепортацию к игроку &c%content%"

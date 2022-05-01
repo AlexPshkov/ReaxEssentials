@@ -48,12 +48,21 @@ helpop_answer: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
 personalmessage_received: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
 #=====================================
 
+#===========Broadcast==========
+broadcast_received: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#=====================================
+
+#===========Say==========
+say_received: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+#=====================================
+
 #==============Телепортация===========
 teleportation_sent: "BLOCK_WOODEN_DOOR_OPEN:1.0:2"
 teleportation_accept: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
 teleportation_decline: "ENTITY_CAT_HURT:1.0:1.5"
 teleportation_ignore_on: "ENTITY_CAT_HURT:1.0:1.5"
 teleportation_ignore_off: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5"
+teleportation_teleported: "ENTITY_EXPERIENCE_ORB_PICKUP:1.0:1.5" #Команда /tp
 #=====================================
 
 #==============Киты===================

@@ -60,7 +60,17 @@
 
 - **/tpr** | **/rtp** | **/tprandom** - Телепортироваться на рандомную точку на карте
 
-  - **/tpr** `<playerName>` - Телепортировать игрока на рандомную точку (`PERM: reaxessentials.tpr.others`)
+  - **/tpr** `<playerName>` - Телепортировать игрока на рандомную точку (`PERM: reaxessentials.tpr.others`) 
+
+
+- **/teleport** | **/tp** | **/tppos** - Телепортироваться к точке/игроку (`PERM: reaxessentials.teleport`)
+
+  - **/tp** `<playerName>` - Телепортироваться к игроку (`PERM: reaxessentials.teleport`)
+
+    - **/tp** `<playerName>` `<playerName>` - Телепортировать игрока к игроку (`PERM: reaxessentials.teleport.others`)
+  - **/tp** `<position>` - Телепортироваться на точку на карте (`PERM: reaxessentials.teleport`) 
+  
+    - **/tp** `<position>` `<playerName>` - Телепортировать игрока на точку (`PERM: reaxessentials.teleport.others`)
 
 
 - **/timeset** `<time>` - Изменить игровое время (`PERM: reaxessentials.timeset`)
@@ -79,7 +89,13 @@
   - **/thunder** - Включить дождь с грозой
 
 
-- **/adminchat** | **/a** | **/ac** `<message>` - Отправить сообщение в админ-чат (`PERM: reaxessentials.adminchat`) 
+- **/adminchat** | **/a** | **/ac** `<message>` - Отправить сообщение в админ-чат (`PERM: reaxessentials.adminchat`)  
+
+
+- **/broadcast** | **/bc** | **/announce** `<message>` - Сделать объявление всему серверу (`PERM: reaxessentials.broadcast`) 
+
+
+- **/say** `<message>` - Написать в чат по-особому (`PERM: reaxessentials.say`)
 
 
 - **/personalmessage** | **/m** `<playerName>` `<message>` - Отправить личное сообщение игроку

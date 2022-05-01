@@ -39,6 +39,15 @@ permissions:
   reaxessentials.god:
     description: Allows you to use god command
 
+  reaxessentials.say:
+    description: Allows you to use say command
+
+  reaxessentials.broadcast:
+    description: Allows you to use broadcast command
+
+  reaxessentials.teleport:
+    description: Allows you to use teleport command
+
   reaxessentials.heal:
     description: Allows you to use heal command
 
@@ -130,3 +139,8 @@ permissions:
     description: Allows you to use /fly <playerName>
     children:
       reaxessentials.fly: true
+
+  reaxessentials.teleport.others:
+    description: Allows you to use /tp <playerName> <playerName>
+    children:
+      reaxessentials.teleport: true

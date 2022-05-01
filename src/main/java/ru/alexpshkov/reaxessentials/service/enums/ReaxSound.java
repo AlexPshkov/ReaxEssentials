@@ -14,6 +14,9 @@ public enum ReaxSound {
 
     COINS_RECEIVED("coins_received"),
 
+    BROADCAST_RECEIVED("broadcast_received"),
+    SAY_RECEIVED("say_received"),
+
     HELPOP_TASK("helpop_task"),
     HELPOP_ANSWER("helpop_answer"),
 
@@ -53,6 +56,7 @@ public enum ReaxSound {
     HOME_SHARED_WITH_YOU("home_shared_with_you"),
     HOME_SHARED("home_shared"),
 
+    TELEPORTATION_TELEPORTED("teleportation_teleported"),
 
     TELEPORTATION_ACCEPT("teleportation_accept"),
     TELEPORTATION_IGNORE_OFF("teleportation_ignore_off"),
