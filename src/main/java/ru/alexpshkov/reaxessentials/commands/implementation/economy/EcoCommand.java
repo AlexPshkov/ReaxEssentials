@@ -38,7 +38,7 @@ public class EcoCommand extends AbstractCommand {
         double amount = convertStringToDouble(args[2]);
         if (amount <= 0) {
             String coinsExample = getMessageFromConfig(ReaxMessage.COINS_FORMAT_EXAMPLE);
-            printMessage(commandSender, ReaxMessage.INVALID_SYNTAX, "amount", coinsExample);
+            printMessage(commandSender, ReaxMessage.INVALID_FORMAT, "amount", coinsExample);
             return false;
         }
 
